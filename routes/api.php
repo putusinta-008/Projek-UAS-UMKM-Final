@@ -20,23 +20,22 @@ use App\Http\Controllers\Api\OrderController;
         Route::delete('/products/{id}', [ProductController::class, 'destroy']);
     });
 
-        /*
-        |--------------------------------------------------------------------------
-        | ORDERS
-        |--------------------------------------------------------------------------
-        */
+    /*
+    |--------------------------------------------------------------------------
+    | ORDERS
+    |--------------------------------------------------------------------------
+    */
 
-        // USER: buat order api
-        Route::post('/orders', [OrderController::class, 'store']);
+    // USER: buat order api
+    Route::post('/orders', [OrderController::class, 'store']);
 
-        // USER: riwayat order sendiri
-        Route::get('/my-orders', [OrderController::class, 'myOrders']);
+    // USER: riwayat order sendiri
+    Route::get('/my-orders', [OrderController::class, 'myOrders']);
 
-        // STAFF: lihat semua order
-        Route::middleware('role:staff')->group(function () {
-            Route::get('/orders', [OrderController::class, 'index']);
-        });
+    // STAFF: lihat semua order
+    Route::middleware('role:staff')->group(function () {
+        Route::get('/orders', [OrderController::class, 'index']);
+    });
 
-        // USER: cancel order
-        Route::delete('/orders/{id}', [OrderController::class, 'cancel']);
-
+    // USER: cancel order
+    Route::delete('/orders/{id}', [OrderController::class, 'cancel']);
