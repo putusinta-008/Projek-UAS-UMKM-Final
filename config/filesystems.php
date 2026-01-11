@@ -32,8 +32,8 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'serve' => true,
+            'root' => storage_path('app/private'),  // Diubah menjadi "private" agar file yang sensitif bisa disimpan di sini
+            'visibility' => 'private',  // Set visibilitasnya sebagai private
             'throw' => false,
             'report' => false,
         ],
@@ -41,12 +41,19 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL'), '/').'/storage',
-            'visibility' => 'public',
+            'url' => rtrim(env('APP_URL'), '/').'/storage',  // URL untuk mengakses file publik
+            'visibility' => 'public',  // Set visibilitasnya sebagai public
             'throw' => false,
             'report' => false,
         ],
 
+        /*
+        |----------------------------------------------------------------------
+        | S3 Disk Configuration
+        |----------------------------------------------------------------------
+        | Karena kamu tidak menggunakan S3, bagian ini bisa dihapus atau
+        | dikomentari jika tidak diperlukan.
+        */
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -74,7 +81,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public'),  // Ini akan membuat simbolik link ke folder publik
     ],
 
 ];
