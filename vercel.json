@@ -1,25 +1,19 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
-  },
   "builds": [
     {
       "src": "public/**/*",
       "use": "@vercel/static"
+    },
+    {
+      "src": "api/index.php",
+      "use": "vercel-php@latest"  
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/index.php"
-    },
-    {
-      "src": "/dist/(.*)",
-      "dest": "/public/dist/$1"
+      "dest": "/api/index.php"
     }
-  ],
-  "buildCommand": "echo 'Frontend Build: Running Vite Build'; npm run build"
+  ]
 }
