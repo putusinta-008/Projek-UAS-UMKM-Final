@@ -15,7 +15,7 @@
     "APP_ENV": "production"
     "APP_DEBUG": "false"
     "APP_URL": "https://umkm-pws.vercel.app"
-    "APP_KEY": "base64:YourBase64EncodedKeyHere"
+    "APP_KEY": "base64:04o4Af4FJY6uqHm++k2bHwpcozYFPOWJcQ0p+eTKVBg="
     "LOG_CHANNEL": "stderr"
     "CACHE_DRIVER": "ararry"
     "SESSION_DRIVER": "cookie"
