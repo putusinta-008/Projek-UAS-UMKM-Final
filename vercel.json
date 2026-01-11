@@ -10,10 +10,5 @@
       "src": "/(.*)",
       "dest": "api/index.php"
     }
-  ],
-  "build": {
-    "env": {
-      "VERCEL_IGNORE": "true"
-    }
-  }
+  ]
 }
