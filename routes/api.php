@@ -1,8 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\OrderController;
+
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+/*
+|--------------------------------------------------------------------------
+| PROTECTED ROUTES
+|--------------------------------------------------------------------------
+*/
+Route::middleware('auth:api')->group(function () {
+
+    // AUTH
+    Route::get('/me', [AuthController::class, 'me']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+
     /*
     |--------------------------------------------------------------------------
     | PRODUCTS
@@ -38,3 +59,4 @@ use App\Http\Controllers\Api\OrderController;
 
     // USER: cancel order
     Route::delete('/orders/{id}', [OrderController::class, 'cancel']);
+});
