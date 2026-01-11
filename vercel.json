@@ -5,15 +5,21 @@
       "runtime": "vercel-php@0.6.0"
     }
   },
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "api/index.php"
+    },
+    {
+      "src": "/dist/(.*)",
+      "dest": "/public/dist/$1"
     }
   ],
-  "build": {
-    "env": {
-      "VERCEL_IGNORE": "true"
-    }
-  }
+  "buildCommand": "echo 'Frontend Build: Running Vite Build'; npm run build"
 }
